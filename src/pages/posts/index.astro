@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// 'posts' is now typed based on your schema above
+const posts: CollectionEntry<'posts'>[] = await getCollection('posts');
+---
+
+<ul>
+  {posts.map((post) => (
+    <li>
+      <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+    </li>
+  ))}
+</ul>
